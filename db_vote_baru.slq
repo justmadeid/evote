@@ -1,0 +1,217 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 12, 2018 at 03:00 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `db_vote_baru`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_kandidat`
+--
+
+CREATE TABLE `tb_kandidat` (
+  `id_kandidat` int(11) NOT NULL,
+  `judul_kandidat` varchar(255) NOT NULL,
+  `kategori` varchar(255) NOT NULL,
+  `cover` varchar(255) NOT NULL,
+  `no_kandidat` varchar(255) NOT NULL,
+  `deskripsi` varchar(255) NOT NULL,
+  `fasilitas` varchar(255) NOT NULL,
+  `gambar` varchar(255) NOT NULL,
+  `video` varchar(255) NOT NULL,
+  `maps` text NOT NULL,
+  `id_vote` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_kandidat`
+--
+
+INSERT INTO `tb_kandidat` (`id_kandidat`, `judul_kandidat`, `kategori`, `cover`, `no_kandidat`, `deskripsi`, `fasilitas`, `gambar`, `video`, `maps`, `id_vote`, `id_user`) VALUES
+(4, 'hhh', 'Tempat wisata', 'error_css.PNG', '', 'bjnlkm', 'dflkldkfld', 'code.PNG', 'dfdfkdlfd', 'dlfkldkflkdlfkd', 2, 12),
+(5, 'hhh', 'Tempat wisata', '20180629_072532.png', '', 'trcvjhbklnm;', 'dflkldkfld', '', 'dfdfkdlfd', 'dlfkldkflkdlfkd', 2, 12),
+(6, 'hhh', 'Tempat wisata', '20180629_072532.png', '', 'trcvjhbklnm;', 'dflkldkfld', '', 'dfdfkdlfd', 'dlfkldkflkdlfkd', 4, 13),
+(7, 'hhh', 'Tempat wisata', '20180629_072532.png', '', 'trcvjhbklnm;', 'dflkldkfld', '', 'dfdfkdlfd', 'dlfkldkflkdlfkd', 4, 13),
+(8, 'hhh', 'Tempat wisata', '20180629_072532.png', '', 'trcvjhbklnm;', 'dflkldkfld', '', 'dfdfkdlfd', 'dlfkldkflkdlfkd', 4, 13),
+(9, 'hhh', 'Tempat wisata', '20180629_072532.png', '', 'trcvjhbklnm;', 'dflkldkfld', '', 'dfdfkdlfd', 'dlfkldkflkdlfkd', 8, 12),
+(10, 'hhh', 'Tempat wisata', '20180629_072532.png', '', 'trcvjhbklnm;', 'dflkldkfld', '', 'dfdfkdlfd', 'dlfkldkflkdlfkd', 2, 12),
+(11, 'hhh', 'Tempat wisata', '20180629_072532.png', '', 'trcvjhbklnm;', 'dflkldkfld', '', 'dfdfkdlfd', 'dlfkldkflkdlfkd', 2, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_pilih`
+--
+
+CREATE TABLE `tb_pilih` (
+  `id_pilih` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_kandidat` int(11) NOT NULL,
+  `id_vote` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `tb_pilih`
+--
+
+INSERT INTO `tb_pilih` (`id_pilih`, `id_user`, `id_kandidat`, `id_vote`) VALUES
+(13, 13, 4, 2),
+(16, 13, 7, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_user`
+--
+
+CREATE TABLE `tb_user` (
+  `id_user` int(11) NOT NULL,
+  `nm_lengkap` varchar(255) NOT NULL,
+  `tempat_lahir` varchar(255) NOT NULL,
+  `tanggal_lahir` varchar(255) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_user`
+--
+
+INSERT INTO `tb_user` (`id_user`, `nm_lengkap`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `email`, `password`) VALUES
+(12, 'made garda', 'semarang', '06/20/2018', 'semarang', 'gardapkl@gmail.com', '123123'),
+(13, 'glhkglk', 'elklklk', '06/21/2018', 'kjkjk', 'mademade@gmail.com', '123123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_vote`
+--
+
+CREATE TABLE `tb_vote` (
+  `id_vote` int(11) NOT NULL,
+  `judul_vote` varchar(255) NOT NULL,
+  `kode` varchar(255) NOT NULL,
+  `kategori` varchar(255) NOT NULL,
+  `cover` varchar(255) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `start_day` varchar(255) NOT NULL,
+  `end_day` varchar(255) NOT NULL,
+  `start_time` varchar(255) NOT NULL,
+  `end_time` varchar(255) NOT NULL,
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_vote`
+--
+
+INSERT INTO `tb_vote` (`id_vote`, `judul_vote`, `kode`, `kategori`, `cover`, `deskripsi`, `start_day`, `end_day`, `start_time`, `end_time`, `id_user`) VALUES
+(2, 'mantap jos gandos', 'EVO32542TE', 'Tempat wisata', 'crepeer.png', 'grsdfEfcaecdazedc', '2018-07-07', '2018-07-15', '23:00', '00:00', 12),
+(3, 'cool', 'EVO05814TE', '', '', '', '2018-07-12', '2018-07-15', '', '', 12),
+(4, 'klkldkfd', 'EVO39801TE', '', '', '', '2018-07-12', '2018-07-15', '01:00', '02:00', 13),
+(5, 'dkfkjdjfkjdk', 'EVO82010TE', '', '', '', '2018-07-12', '2018-07-15', '', '', 13),
+(6, 'djfjkdjfkjd', 'EVO00541TE', '', '', '', '2018-07-12', '2018-07-15', '', '', 13),
+(7, 'dkfjkfjdk', 'EVO82322TE', '', '', '', '2018-07-12', '2018-07-15', '', '', 13),
+(8, 'yang mantap', 'EVO88535TE', '', '', '', '2018-07-12', '2018-07-15', '01:00', '12:00', 12);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tb_kandidat`
+--
+ALTER TABLE `tb_kandidat`
+  ADD PRIMARY KEY (`id_kandidat`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_vote` (`id_vote`);
+
+--
+-- Indexes for table `tb_pilih`
+--
+ALTER TABLE `tb_pilih`
+  ADD PRIMARY KEY (`id_pilih`),
+  ADD KEY `id_kandidat` (`id_kandidat`);
+
+--
+-- Indexes for table `tb_user`
+--
+ALTER TABLE `tb_user`
+  ADD PRIMARY KEY (`id_user`);
+
+--
+-- Indexes for table `tb_vote`
+--
+ALTER TABLE `tb_vote`
+  ADD PRIMARY KEY (`id_vote`),
+  ADD KEY `id_user` (`id_user`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tb_kandidat`
+--
+ALTER TABLE `tb_kandidat`
+  MODIFY `id_kandidat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `tb_pilih`
+--
+ALTER TABLE `tb_pilih`
+  MODIFY `id_pilih` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+--
+-- AUTO_INCREMENT for table `tb_user`
+--
+ALTER TABLE `tb_user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `tb_vote`
+--
+ALTER TABLE `tb_vote`
+  MODIFY `id_vote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tb_kandidat`
+--
+ALTER TABLE `tb_kandidat`
+  ADD CONSTRAINT `tb_kandidat_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`),
+  ADD CONSTRAINT `tb_kandidat_ibfk_2` FOREIGN KEY (`id_vote`) REFERENCES `tb_vote` (`id_vote`);
+
+--
+-- Constraints for table `tb_pilih`
+--
+ALTER TABLE `tb_pilih`
+  ADD CONSTRAINT `tb_pilih_ibfk_1` FOREIGN KEY (`id_kandidat`) REFERENCES `tb_kandidat` (`id_kandidat`);
+
+--
+-- Constraints for table `tb_vote`
+--
+ALTER TABLE `tb_vote`
+  ADD CONSTRAINT `tb_vote_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
